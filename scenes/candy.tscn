@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://diiwn2w661bjt"]
+[gd_scene format=3 uid="uid://diiwn2w661bjt"]
 
 [ext_resource type="Script" uid="uid://cg5jmbps2gm06" path="res://scenes/candy.gd" id="1_unhbl"]
 
@@ -9,7 +9,7 @@ radius = 14.0
 script = ExtResource("1_unhbl")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1348017588]
-scale = Vector2(0.6, 0.6)
+scale = Vector2(3, 3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=762109634]
 shape = SubResource("CircleShape2D_candy")

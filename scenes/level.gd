@@ -1,13 +1,19 @@
 extends Node2D
 
 @onready var timer: Timer = $Timer
+@onready var player: CharacterBody2D = $Player
+
+var ui: CanvasLayer
 var time_label: Label
+var candies_label: Label
 var elapsed: float = 0.0
 var game_started: bool = false
+var is_game_over: bool = false
 
 
 const MONSTER_SCENE: PackedScene = preload("res://scenes/monster.tscn")
 const CANDY_SCENE: PackedScene = preload("res://scenes/candy.tscn")
+const BUCKET_TEXTURE: Texture2D = preload("res://assets/items/pumpkin_bucket.svg")
 const VARIANTS: Array[StringName] = [
 	&"ghost", &"zombie_boy", &"zombie_girl", &"vampire", &"witch",
 	&"skeleton", &"mummy", &"pumpkin", &"werewolf", &"demon"
@@ -22,7 +28,7 @@ var _candy_timer: Timer
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	get_tree().paused = true
-	var ui := CanvasLayer.new()
+	ui = CanvasLayer.new()
 	add_child(ui)
 
 	time_label = Label.new()
@@ -30,6 +36,25 @@ func _ready() -> void:
 	time_label.add_theme_font_size_override("font_size", 32)
 	time_label.add_theme_color_override("font_color", Color.ORANGE)
 	ui.add_child(time_label)
+
+	var bucket_icon := TextureRect.new()
+	bucket_icon.texture = BUCKET_TEXTURE
+	bucket_icon.position = Vector2(1140, 12)
+	bucket_icon.size = Vector2(56, 56)
+	bucket_icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	bucket_icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	ui.add_child(bucket_icon)
+
+	candies_label = Label.new()
+	candies_label.text = "0"
+	candies_label.position = Vector2(1200, 20)
+	candies_label.add_theme_font_size_override("font_size", 36)
+	candies_label.add_theme_color_override("font_color", Color.ORANGE)
+	ui.add_child(candies_label)
+
+	player.candies_changed.connect(_on_candies_changed)
+	player.game_over.connect(_on_player_game_over)
+	_on_candies_changed(player.candies)
 
 	timer.one_shot = true
 	timer.timeout.connect(_on_game_start)
@@ -80,3 +105,33 @@ func _on_game_start() -> void:
 
 func _on_timer_timeout() -> void:
 	pass
+
+
+func _on_candies_changed(count: int) -> void:
+	candies_label.text = str(count)
+
+
+func _on_player_game_over() -> void:
+	if is_game_over:
+		return
+	is_game_over = true
+	game_started = false
+	get_tree().paused = true
+
+	var over_label := Label.new()
+	over_label.text = "GAME OVER"
+	over_label.add_theme_font_size_override("font_size", 96)
+	over_label.add_theme_color_override("font_color", Color(1.0, 0.2, 0.2, 1.0))
+	over_label.position = Vector2(380, 300)
+	ui.add_child(over_label)
+
+	var score_label := Label.new()
+	score_label.text = "Zeit: %02d:%02d" % [int(elapsed) / 60, int(elapsed) % 60]
+	score_label.add_theme_font_size_override("font_size", 36)
+	score_label.add_theme_color_override("font_color", Color.ORANGE)
+	score_label.position = Vector2(520, 410)
+	ui.add_child(score_label)
+
+	await get_tree().create_timer(3.0, true, false, true).timeout
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
