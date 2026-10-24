@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bn6a18km7yj1y"]
+
+[ext_resource type="Script" uid="uid://bwnsc6cuxfpr0" path="res://scenes/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://dkvodmahuk8r0" path="res://assets/monsters/monster_ghost.svg" id="2_g2els"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2e6nt"]
+radius = 8.0
+height = 22.0
+
+[node name="Player" type="CharacterBody2D" unique_id=2055532218]
+script = ExtResource("1_g2els")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=137268328]
+texture = ExtResource("2_g2els")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=272748302]
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_2e6nt")

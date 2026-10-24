@@ -1,0 +1,332 @@
+[gd_scene format=3 uid="uid://cmainmenu0001"]
+
+[ext_resource type="Script" uid="uid://c4e5h2dtjek6f" path="res://scenes/main_menu.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://b1e61unn8liaa" path="res://assets/menu/moon.svg" id="2_moon"]
+[ext_resource type="Texture2D" uid="uid://boqet1norqtmn" path="res://assets/menu/stars.svg" id="3_stars"]
+[ext_resource type="Texture2D" uid="uid://bc2j4wa7wr38q" path="res://assets/menu/tree_dead.svg" id="4_tree"]
+[ext_resource type="Texture2D" uid="uid://ce755mve2j180" path="res://assets/menu/tombstone.svg" id="5_tomb"]
+[ext_resource type="Texture2D" uid="uid://by08ijbqtse2d" path="res://assets/menu/bat.svg" id="6_bat"]
+[ext_resource type="Texture2D" uid="uid://bre5dc45u21o0" path="res://assets/monsters/monster_zombie_boy.svg" id="7_zombie"]
+[ext_resource type="Texture2D" uid="uid://dkvodmahuk8r0" path="res://assets/monsters/monster_ghost.svg" id="8_ghost"]
+[ext_resource type="Texture2D" uid="uid://dal2om0tibgn7" path="res://assets/monsters/monster_werewolf.svg" id="9_werewolf"]
+
+[node name="MainMenu" type="Control" unique_id=1330333409]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Sky" type="ColorRect" parent="." unique_id=1941708410]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.055, 0.04, 0.12, 1)
+
+[node name="SkyGradient" type="ColorRect" parent="." unique_id=1728317215]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 560.0
+mouse_filter = 2
+color = Color(0.08, 0.05, 0.18, 0.6)
+
+[node name="Stars" type="TextureRect" parent="." unique_id=1988988546]
+texture_filter = 1
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 560.0
+mouse_filter = 2
+texture = ExtResource("3_stars")
+stretch_mode = 1
+
+[node name="MoonGlow" type="ColorRect" parent="." unique_id=82181804]
+layout_mode = 0
+offset_left = 980.0
+offset_top = 30.0
+offset_right = 1220.0
+offset_bottom = 240.0
+mouse_filter = 2
+color = Color(1, 0.95, 0.6, 0.08)
+
+[node name="Moon" type="TextureRect" parent="." unique_id=365541798]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1020.0
+offset_top = 65.0
+offset_right = 1148.0
+offset_bottom = 193.0
+pivot_offset = Vector2(64, 64)
+mouse_filter = 2
+texture = ExtResource("2_moon")
+
+[node name="Trees" type="Control" parent="." unique_id=1626874210]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Tree1" type="TextureRect" parent="Trees" unique_id=281534526]
+texture_filter = 1
+layout_mode = 0
+offset_left = 40.0
+offset_top = 420.0
+offset_right = 168.0
+offset_bottom = 676.0
+pivot_offset = Vector2(64, 256)
+mouse_filter = 2
+texture = ExtResource("4_tree")
+
+[node name="Tree2" type="TextureRect" parent="Trees" unique_id=1261847656]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1060.0
+offset_top = 440.0
+offset_right = 1188.0
+offset_bottom = 696.0
+pivot_offset = Vector2(64, 256)
+mouse_filter = 2
+texture = ExtResource("4_tree")
+
+[node name="Tree3" type="TextureRect" parent="Trees" unique_id=553294855]
+modulate = Color(0.7, 0.7, 0.75, 1)
+texture_filter = 1
+layout_mode = 0
+offset_left = 620.0
+offset_top = 460.0
+offset_right = 716.0
+offset_bottom = 652.0
+pivot_offset = Vector2(48, 192)
+mouse_filter = 2
+texture = ExtResource("4_tree")
+
+[node name="Ground" type="ColorRect" parent="." unique_id=481793361]
+layout_mode = 0
+offset_top = 560.0
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+color = Color(0.04, 0.04, 0.08, 1)
+
+[node name="HorizonLine" type="ColorRect" parent="." unique_id=468626831]
+layout_mode = 0
+offset_top = 558.0
+offset_right = 1280.0
+offset_bottom = 562.0
+mouse_filter = 2
+color = Color(0.12, 0.08, 0.18, 1)
+
+[node name="DirtMound" type="ColorRect" parent="." unique_id=2092707968]
+layout_mode = 0
+offset_left = 170.0
+offset_top = 630.0
+offset_right = 310.0
+offset_bottom = 644.0
+mouse_filter = 2
+color = Color(0.08, 0.05, 0.03, 1)
+
+[node name="GraveZombieArea" type="Control" parent="." unique_id=1422740119]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -84.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Zombie" type="TextureRect" parent="GraveZombieArea" unique_id=981395789]
+texture_filter = 1
+layout_mode = 0
+offset_left = 180.0
+offset_top = 636.0
+offset_right = 276.0
+offset_bottom = 732.0
+pivot_offset = Vector2(48, 48)
+mouse_filter = 2
+texture = ExtResource("7_zombie")
+
+[node name="Tombstones" type="Control" parent="." unique_id=2051801694]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Tomb1" type="TextureRect" parent="Tombstones" unique_id=672590421]
+texture_filter = 1
+layout_mode = 0
+offset_left = 200.0
+offset_top = 580.0
+offset_right = 272.0
+offset_bottom = 664.0
+mouse_filter = 2
+texture = ExtResource("5_tomb")
+
+[node name="Tomb2" type="TextureRect" parent="Tombstones" unique_id=768021617]
+texture_filter = 1
+layout_mode = 0
+offset_left = 400.0
+offset_top = 590.0
+offset_right = 472.0
+offset_bottom = 674.0
+mouse_filter = 2
+texture = ExtResource("5_tomb")
+
+[node name="Tomb3" type="TextureRect" parent="Tombstones" unique_id=1772955822]
+texture_filter = 1
+layout_mode = 0
+offset_left = 800.0
+offset_top = 585.0
+offset_right = 872.0
+offset_bottom = 669.0
+mouse_filter = 2
+texture = ExtResource("5_tomb")
+
+[node name="Tomb4" type="TextureRect" parent="Tombstones" unique_id=393198549]
+texture_filter = 1
+layout_mode = 0
+offset_left = 950.0
+offset_top = 595.0
+offset_right = 1022.0
+offset_bottom = 679.0
+mouse_filter = 2
+texture = ExtResource("5_tomb")
+
+[node name="Monsters" type="Control" parent="." unique_id=459721284]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Werewolf" type="TextureRect" parent="Monsters" unique_id=224024055]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1320.0
+offset_top = 546.0
+offset_right = 1416.0
+offset_bottom = 642.0
+pivot_offset = Vector2(48, 48)
+mouse_filter = 2
+texture = ExtResource("9_werewolf")
+
+[node name="Ghost" type="TextureRect" parent="Monsters" unique_id=253378533]
+modulate = Color(1, 1, 1, 0.65)
+texture_filter = 1
+layout_mode = 0
+offset_left = 500.0
+offset_top = 250.0
+offset_right = 596.0
+offset_bottom = 346.0
+pivot_offset = Vector2(48, 48)
+mouse_filter = 2
+texture = ExtResource("8_ghost")
+
+[node name="Bats" type="Control" parent="." unique_id=505419007]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Bat1" type="TextureRect" parent="Bats" unique_id=1562677157]
+texture_filter = 1
+layout_mode = 0
+offset_left = 120.0
+offset_top = 110.0
+offset_right = 184.0
+offset_bottom = 158.0
+pivot_offset = Vector2(32, 24)
+mouse_filter = 2
+texture = ExtResource("6_bat")
+
+[node name="Bat2" type="TextureRect" parent="Bats" unique_id=1348897210]
+texture_filter = 1
+layout_mode = 0
+offset_left = 480.0
+offset_top = 200.0
+offset_right = 544.0
+offset_bottom = 248.0
+pivot_offset = Vector2(32, 24)
+mouse_filter = 2
+texture = ExtResource("6_bat")
+
+[node name="Bat3" type="TextureRect" parent="Bats" unique_id=1188940493]
+texture_filter = 1
+layout_mode = 0
+offset_left = 820.0
+offset_top = 80.0
+offset_right = 884.0
+offset_bottom = 128.0
+pivot_offset = Vector2(32, 24)
+mouse_filter = 2
+texture = ExtResource("6_bat")
+
+[node name="Title" type="Label" parent="." unique_id=798417961]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 160.0
+offset_right = 1180.0
+offset_bottom = 290.0
+pivot_offset = Vector2(540, 65)
+theme_override_colors/font_color = Color(1, 0.55, 0.1, 1)
+theme_override_colors/font_outline_color = Color(0.3, 0.03, 0.03, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 84
+text = "Squeak or Treat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Subtitle" type="Label" parent="." unique_id=1177357840]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 290.0
+offset_right = 1180.0
+offset_bottom = 330.0
+theme_override_colors/font_color = Color(0.75, 0.75, 0.9, 0.85)
+theme_override_colors/font_outline_color = Color(0.1, 0.05, 0.15, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 22
+text = "~ Eine schaurige Halloween-Nacht ~"
+horizontal_alignment = 1
+
+[node name="Buttons" type="VBoxContainer" parent="." unique_id=817157247]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -200.0
+offset_right = 120.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 14
+
+[node name="StartButton" type="Button" parent="Buttons" unique_id=604277520]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Start"
+
+[node name="QuitButton" type="Button" parent="Buttons" unique_id=544773053]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Beenden"

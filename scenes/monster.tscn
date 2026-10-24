@@ -1,0 +1,152 @@
+[gd_scene format=3 uid="uid://cmonsterent01"]
+
+[ext_resource type="Texture2D" uid="uid://sq0mwh7m7hna" path="res://assets/monsters/monster_demon.svg" id="1_demon"]
+[ext_resource type="Script" uid="uid://bxh3yl4u5yqtn" path="res://scenes/monster.gd" id="1_x2c6u"]
+[ext_resource type="Texture2D" uid="uid://dkvodmahuk8r0" path="res://assets/monsters/monster_ghost.svg" id="2_ghost"]
+[ext_resource type="Texture2D" uid="uid://ckqpu0tadltmf" path="res://assets/monsters/monster_mummy.svg" id="3_mummy"]
+[ext_resource type="Texture2D" uid="uid://cje1j0ajt8rvm" path="res://assets/monsters/monster_pumpkin.svg" id="4_pumpkin"]
+[ext_resource type="Texture2D" uid="uid://bacm7gfin84q2" path="res://assets/monsters/monster_skeleton.svg" id="5_skeleton"]
+[ext_resource type="Texture2D" uid="uid://b1stww5lcvfsv" path="res://assets/monsters/monster_vampire.svg" id="6_vampire"]
+[ext_resource type="Texture2D" uid="uid://dal2om0tibgn7" path="res://assets/monsters/monster_werewolf.svg" id="7_werewolf"]
+[ext_resource type="Texture2D" uid="uid://babnkfndqront" path="res://assets/monsters/monster_witch.svg" id="8_witch"]
+[ext_resource type="Texture2D" uid="uid://bre5dc45u21o0" path="res://assets/monsters/monster_zombie_boy.svg" id="9_zombie_boy"]
+[ext_resource type="Texture2D" uid="uid://dpjkk8dlvuw4d" path="res://assets/monsters/monster_zombie_girl.svg" id="10_zombie_girl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_monsters"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_demon")
+}],
+"loop": 1,
+"name": &"demon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ghost")
+}],
+"loop": 1,
+"name": &"ghost",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_mummy")
+}],
+"loop": 1,
+"name": &"mummy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_pumpkin")
+}],
+"loop": 1,
+"name": &"pumpkin",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_skeleton")
+}],
+"loop": 1,
+"name": &"skeleton",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_vampire")
+}],
+"loop": 1,
+"name": &"vampire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_werewolf")
+}],
+"loop": 1,
+"name": &"werewolf",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_witch")
+}],
+"loop": 1,
+"name": &"witch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_zombie_boy")
+}],
+"loop": 1,
+"name": &"zombie_boy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_zombie_girl")
+}],
+"loop": 1,
+"name": &"zombie_girl",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1"]
+height = 28.0
+
+[sub_resource type="Animation" id="Animation_idle_bob"]
+resource_name = "idle_bob"
+length = 1.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position:y")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -5.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.08, 0.0, -0.08, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1"]
+_data = {
+&"idle_bob": SubResource("Animation_idle_bob")
+}
+
+[node name="Monster" type="CharacterBody2D" unique_id=1529029438]
+script = ExtResource("1_x2c6u")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=833063390]
+texture_filter = 1
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_monsters")
+animation = &"zombie_boy"
+autoplay = "zombie_boy"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=23126828]
+shape = SubResource("CapsuleShape2D_1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1291872735]
+libraries/ = SubResource("AnimationLibrary_1")
+autoplay = &"idle_bob"
+

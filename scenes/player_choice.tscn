@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://xhdxp1i3uki"]
+
+[ext_resource type="Script" uid="uid://bel25ncuk7r7k" path="res://scenes/player_choice.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://66mflxi4ciho" path="res://assets/kids/base/kid_boy_idle.svg" id="2_boy"]
+[ext_resource type="Texture2D" uid="uid://dhr8subcrfk6o" path="res://assets/kids/base/kid_girl_idle.svg" id="3_girl"]
+
+[node name="PlayerChoice" type="Control" unique_id=1602674123]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Background" type="ColorRect" parent="." unique_id=42236824]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.055, 0.04, 0.12, 1)
+
+[node name="Row" type="HBoxContainer" parent="." unique_id=1258252489]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -160.0
+offset_right = 320.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 80
+alignment = 1
+
+[node name="BoyButton" type="Button" parent="Row" unique_id=675582029]
+texture_filter = 1
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+icon = ExtResource("2_boy")
+expand_icon = true
+
+[node name="GirlButton" type="Button" parent="Row" unique_id=39021244]
+texture_filter = 1
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+icon = ExtResource("3_girl")
+expand_icon = true
+
+[connection signal="pressed" from="Row/BoyButton" to="." method="_on_boy_button_pressed"]
+[connection signal="pressed" from="Row/GirlButton" to="." method="_on_girl_button_pressed"]
