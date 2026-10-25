@@ -63,4 +63,6 @@ shape = SubResource("RectangleShape2D_w7c3h")
 position = Vector2(638, 14)
 shape = SubResource("RectangleShape2D_w7c3h")
 
+[node name="CandyCounter" type="Node2D" parent="." unique_id=1702283654]
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

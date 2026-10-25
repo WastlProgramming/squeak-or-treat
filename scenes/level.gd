@@ -9,7 +9,8 @@ var candies_label: Label
 var elapsed: float = 0.0
 var game_started: bool = false
 var is_game_over: bool = false
-
+var level: int =  1
+var level_label: Label
 
 const MONSTER_SCENE: PackedScene = preload("res://scenes/monster.tscn")
 const CANDY_SCENE: PackedScene = preload("res://scenes/candy.tscn")
@@ -59,6 +60,13 @@ func _ready() -> void:
 	timer.one_shot = true
 	timer.timeout.connect(_on_game_start)
 	timer.start(10.0)
+
+	level_label = Label.new()
+	level_label.text = str(level)
+	level_label.position = Vector2(600, 20)
+	level_label.add_theme_font_size_override("font_size", 36)
+	level_label.add_theme_color_override("font_color", Color.ORANGE)
+	ui.add_child(level_label)
 
 
 func spawn_monster(pos: Vector2) -> void:
