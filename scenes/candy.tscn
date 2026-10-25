@@ -2,9 +2,14 @@
 
 [ext_resource type="Script" uid="uid://cg5jmbps2gm06" path="res://scenes/candy.gd" id="1_unhbl"]
 
-[node name="Candy" type="CharacterBody2D" unique_id=1361082321]
+[sub_resource type="CircleShape2D" id="CircleShape2D_candy"]
+radius = 14.0
+
+[node name="Candy" type="Area2D" unique_id=1361082321]
 script = ExtResource("1_unhbl")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1348017588]
+scale = Vector2(3, 3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=762109634]
+shape = SubResource("CircleShape2D_candy")
